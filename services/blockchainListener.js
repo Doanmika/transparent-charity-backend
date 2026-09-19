@@ -2,7 +2,7 @@
 const Campaign = require('../models/Campaign');
 const Donation = require('../models/Donation');
 const Distribution = require('../models/Distribution');
-const contractABI = require('../../blockchain/CharityDonation.json');
+const contractABI = require('../blockchain/CharityDonation.json');
 const { updateCampaignTotal } = require('../utils/campaignUtils');
 
 const initBlockchainListener = () => {
