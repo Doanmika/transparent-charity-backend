@@ -1,0 +1,178 @@
+﻿[
+  {
+    "inputs": [],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "internalType": "uint256", "name": "campaignId", "type": "uint256" },
+      { "indexed": false, "internalType": "string", "name": "title", "type": "string" },
+      { "indexed": true, "internalType": "address", "name": "organization", "type": "address" },
+      { "indexed": false, "internalType": "uint256", "name": "goalAmount", "type": "uint256" },
+      { "indexed": false, "internalType": "uint256", "name": "startDate", "type": "uint256" },
+      { "indexed": false, "internalType": "uint256", "name": "endDate", "type": "uint256" }
+    ],
+    "name": "CampaignCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "internalType": "uint256", "name": "campaignId", "type": "uint256" },
+      { "indexed": true, "internalType": "address", "name": "donor", "type": "address" },
+      { "indexed": false, "internalType": "uint256", "name": "amount", "type": "uint256" },
+      { "indexed": false, "internalType": "uint256", "name": "timestamp", "type": "uint256" }
+    ],
+    "name": "DonationReceived",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "internalType": "uint256", "name": "requestId", "type": "uint256" },
+      { "indexed": true, "internalType": "uint256", "name": "campaignId", "type": "uint256" },
+      { "indexed": true, "internalType": "address", "name": "recipient", "type": "address" },
+      { "indexed": false, "internalType": "uint256", "name": "amount", "type": "uint256" },
+      { "indexed": false, "internalType": "string", "name": "purpose", "type": "string" }
+    ],
+    "name": "FundDistributionRequested",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "internalType": "uint256", "name": "requestId", "type": "uint256" },
+      { "indexed": true, "internalType": "uint256", "name": "campaignId", "type": "uint256" },
+      { "indexed": false, "internalType": "address", "name": "admin", "type": "address" }
+    ],
+    "name": "FundDistributionApproved",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "internalType": "uint256", "name": "requestId", "type": "uint256" },
+      { "indexed": true, "internalType": "uint256", "name": "campaignId", "type": "uint256" },
+      { "indexed": true, "internalType": "address", "name": "recipient", "type": "address" },
+      { "indexed": false, "internalType": "uint256", "name": "amount", "type": "uint256" },
+      { "indexed": false, "internalType": "uint256", "name": "timestamp", "type": "uint256" }
+    ],
+    "name": "FundDistributed",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "admin",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "campaignCount",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "name": "campaigns",
+    "outputs": [
+      { "internalType": "uint256", "name": "id", "type": "uint256" },
+      { "internalType": "string", "name": "title", "type": "string" },
+      { "internalType": "string", "name": "description", "type": "string" },
+      { "internalType": "address payable", "name": "organization", "type": "address" },
+      { "internalType": "uint256", "name": "goalAmount", "type": "uint256" },
+      { "internalType": "uint256", "name": "totalDonated", "type": "uint256" },
+      { "internalType": "uint256", "name": "totalDistributed", "type": "uint256" },
+      { "internalType": "uint256", "name": "startDate", "type": "uint256" },
+      { "internalType": "uint256", "name": "endDate", "type": "uint256" },
+      { "internalType": "bool", "name": "isActive", "type": "bool" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "name": "distributionRequests",
+    "outputs": [
+      { "internalType": "uint256", "name": "id", "type": "uint256" },
+      { "internalType": "uint256", "name": "campaignId", "type": "uint256" },
+      { "internalType": "address payable", "name": "recipient", "type": "address" },
+      { "internalType": "uint256", "name": "amount", "type": "uint256" },
+      { "internalType": "string", "name": "purpose", "type": "string" },
+      { "internalType": "bool", "name": "isApproved", "type": "bool" },
+      { "internalType": "bool", "name": "isExecuted", "type": "bool" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "string", "name": "_title", "type": "string" },
+      { "internalType": "string", "name": "_description", "type": "string" },
+      { "internalType": "uint256", "name": "_goalAmount", "type": "uint256" },
+      { "internalType": "uint256", "name": "_durationInDays", "type": "uint256" }
+    ],
+    "name": "createCampaign",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "_campaignId", "type": "uint256" }],
+    "name": "donate",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_campaignId", "type": "uint256" },
+      { "internalType": "address payable", "name": "_recipient", "type": "address" },
+      { "internalType": "uint256", "name": "_amount", "type": "uint256" },
+      { "internalType": "string", "name": "_purpose", "type": "string" }
+    ],
+    "name": "createDistributionRequest",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "_requestId", "type": "uint256" }],
+    "name": "approveDistribution",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "_requestId", "type": "uint256" }],
+    "name": "executeDistribution",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "_campaignId", "type": "uint256" }],
+    "name": "getCampaignRequests",
+    "outputs": [{ "internalType": "uint256[]", "name": "", "type": "uint256[]" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+    {
+      "inputs": [{ "internalType": "uint256", "name": "_campaignId", "type": "uint256" }],
+      "name": "getCampaignBalance",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "uint256", "name": "_campaignId", "type": "uint256" }],
+      "name": "closeExpiredCampaign",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ]
