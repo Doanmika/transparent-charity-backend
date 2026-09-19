@@ -1,0 +1,18 @@
+{
+  "name": "transparent-charity-backend",
+  "version": "1.0.0",
+  "description": "Backend cho He thong quyen gop tu thien va phan phoi quy minh bach bang Blockchain",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "ethers": "^6.13.2",
+    "express": "^4.19.2",
+    "express-rate-limit": "^8.7.0",
+    "mongoose": "^8.5.2"
+  }
+}
